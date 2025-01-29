@@ -1,48 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time</title>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">MyBusiness</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div id="time-display"></div>
 
-  <section class="hero">
-    <h1>Welcome to MyBusiness</h1>
-    <p>We provide top-notch solutions for your business needs.</p>
-    <a href="services.html" class="cta-button">Explore Services</a>
-  </section>
+    <script>
+        // Get the current local time
+        function updateTime() {
+            const display = document.getElementById('time-display');
+            const currentTime = new Dateocal();
+            
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+            const milliseconds = currentTime.getMilliseconds();
 
-  <section class="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-slider">
-      <div class="testimonial">
-        <p>"Great service and professional team!"</p>
-        <span>- Client A</span>
-      </div>
-      <div class="testimonial">
-        <p>"Highly recommended for business solutions."</p>
-        <span>- Client B</span>
-      </div>
-    </div>
-  </section>
+            const timeString = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.{milliseconds.toString().padStart(3, '0')}`;
+            display.textContent = timeString;
+        }
 
-  <footer>
-    <p>&copy; 2023 MyBusiness. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
+        // Update the time every second
+        const interval = setInterval(updateTime, 1000);
+        
+        // Start updating immediately when the page loads
+        if (interval) {
+            clearInterval(interval); 
+            updateTime();
+        }
+    </script>
 </body>
 </html>
